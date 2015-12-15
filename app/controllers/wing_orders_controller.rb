@@ -1,4 +1,6 @@
+
 class WingOrdersController < ApplicationController
+
   def index
     @wing_orders = WingOrder.all
   end
@@ -32,7 +34,7 @@ class WingOrdersController < ApplicationController
       :city,
       :state,
       :quantity,
-      :dressing,
+      :ranch_dressing,
       flavor_ids: []
     )
   end

@@ -1,5 +1,3 @@
-
-
 <h1>Wing Orders</h1>
 
 <%= form_for(@wing_order) do |f| %>
@@ -27,33 +25,23 @@
 
   <div class="field">
     <%= f.label(:state, "State") %>
-    <%= f.select(:state) do %>
-    <% @state_collection.each do |c| -%>
-      <%= content_tag(:option, c.first, value: c.last) %>
-    <% end %>
-  <% end %>
+    <%= f.select(:state, options_for_select(@state_collection)) %>
   </div>
-
 
 <div class="field">
     <%= f.label :quantity, "Quantity" %>
     <%= f.collection_radio_buttons(:quantity, @quantity_collection, :first, :last)%>
 </div>
 
-
-
   <div class="field">
-    <%= check_box_tag(:ranch_dressing) %>
-    <%= label_tag(:ranch_dressing, "Add Ranch Dressing") %>
+    <%= f.check_box(:ranch_dressing) %>
+    <%= f.label(:ranch_dressing, "Add Ranch Dressing") %>
   </div>
-
-
 
   <div class="field">
       <%= f.label :flavor_ids, "Flavor" %>
       <%= f.collection_check_boxes(:flavor_ids, @flavor_collection, :id, :name)%>
   </div>
-
 
   <div class="actions">
     <%= f.submit "Place Order" %>
